@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>CityBar.qml</file>
+        <file>MyStyle.qml</file>
+    </qresource>
+    <qresource prefix="/img">
+        <file>mainBG.png</file>
     </qresource>
 </RCC>
