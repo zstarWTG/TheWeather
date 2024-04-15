@@ -1,10 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QSslSocket>
-#include <QNetworkAccessManager>
+#include <QQmlContext>
 #include <QLocale>
 #include <QTranslator>
-#include <QDebug>
+
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -24,7 +23,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
-
+    engine.rootContext()->setContextProperty("applicationDir", QGuiApplication::applicationDirPath());
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,

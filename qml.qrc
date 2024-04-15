@@ -3,8 +3,9 @@
         <file>main.qml</file>
         <file>CityBar.qml</file>
         <file>MyStyle.qml</file>
+        <file>MyMenuBar.qml</file>
+        <file>MyMenu.qml</file>
+        <file>MyMenuSeparator.qml</file>
     </qresource>
-    <qresource prefix="/img">
-        <file>mainBG.png</file>
-    </qresource>
+    <qresource prefix="/img"/>
 </RCC>

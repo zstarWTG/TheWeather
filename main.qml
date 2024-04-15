@@ -4,75 +4,45 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.15
 import QtQml.Models 2.15
+import QtQml.StateMachine 1.15 as DSM
+import "./"
+
 ApplicationWindow {
     id:mainWnd
     width: 640
     height: 480
     visible: true
     title: qsTr("The Weather")
+    font.pointSize: 8
 
-    background: Image {
-        id: imgBG
-        cache: false
-        source: "qrc:/img/mainBG.png"
-        sourceSize: Qt.size(mainWnd.width,mainWnd.height)
-    }
+    property string appDir: "file:///"+applicationDir
+    property color wndThemColor: Qt.lighter("blue",1.5)
 
-    menuBar: MenuBar{
+    // background: Image {
+    //     id: imgBG
+    //     cache: false
+    //     source: appDir + "/img/mainBG.png"
+    //     sourceSize: Qt.size(mainWnd.width,mainWnd.height)
+    // }
 
-        Menu {
-            id: menuFile
+
+
+
+    menuBar: MyMenuBar{
+        id:myMenuBar
+        totalHeight: 20
+        elemWidth: 60
+        themColor: wndThemColor
+
+        MyMenu{
+            eleHeight: parent.totalHeight
             width: 100
+            themColor: myMenuBar.themColor
             title: "File"
 
-            Action { text: "Open" }
-            Action { text: "Close" }
-
-            delegate: ItemDelegate {
-                width: menuFile.width
-                height: 40
-
-            }
         }
-
-        // delegate: Rectangle{
-        //     width: 60;height: 30
-        //     Text {
-        //         id: name
-        //         text: model.title
-        //     }
-        // }
-
     }
-
-    Button{
-        id:btn
-        anchors.right: parent.right
-        anchors.rightMargin: 200
-        text: "style2"
-    }
-
 
     footer: RowLayout{
-        Label{
-            id:updateState
-            state: "latest"
-            Layout.bottomMargin: 10
-            states:[
-                State{
-                    name: "latest"
-                    PropertyChanges {
-                        target: updateState
-                        text:qsTr("latest")
-                    }
-                },
-                State{
-                    name: "updateable"
-                    PropertyChanges {
-                        target: updateState
-                        text:qsTr("updateable")
-                    }
-                }]
-        }
     }
 }
